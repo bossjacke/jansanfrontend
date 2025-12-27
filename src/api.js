@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3003/api";
+const API_URL = import.meta.env.VITE_API_URL || "https://adamsfire.up.railway.app/api";
 console.log("Using API URL:", API_URL);
 
 // Helper function to get auth headers
