@@ -1,0 +1,15 @@
+/* .page-flip {
+  min-height: 80vh;
+  padding: 24px;
+  background: #0f172a;
+  border-radius: 18px;
+  box-shadow:
+    12px 12px 24px #020617,
+    -12px -12px 24px #1e293b;
+  transform-style: preserve-3d;
+  perspective: 1200px;
+} */
+
+.jansanApp {
+  margin: 10px 200px 0px 200px;
+}

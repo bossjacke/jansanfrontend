@@ -1,0 +1,339 @@
+/* Login.css */
+
+/* --- General Layout --- */
+.login-page {
+    margin: 50px 200px 100px 200px;
+    border-radius: 30px;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+    display: flex;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* --- Left Side (Form Area) --- */
+.login-form-area {
+    flex: 1; /* Adjust as needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* padding: 10px; */
+    box-sizing: border-box;
+}
+
+.login-content-wrapper {
+    max-width: 400px;
+    width: 50%;
+}
+
+/* --- Branding --- */
+.login-branding {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.login-logo-container {
+    width: 64px; /* 16 * 4 = 64px */
+    height: 64px;
+    border-radius: 12px; /* 2xl = 12px */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px; /* mx-auto mb-4 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-logo {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.login-title {
+    font-size: 2rem; /* 3xl = 2rem */
+    font-weight: 700; /* bold */
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.login-subtitle {
+    color: #666;
+    font-size: 1rem;
+}
+
+/* --- Form --- */
+.login-form {
+    margin-top: 30px; /* space-y-6 roughly */
+}
+
+.general-error-message {
+    background-color: #ffebeb; /* red-50 */
+    border: 1px solid #ffcccc; /* red-200 */
+    color: #cc0000; /* red-700 */
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    margin-bottom: 24px;
+}
+
+.form-group {
+    margin-bottom: 24px; /* space-y-6 */
+}
+
+.form-label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500; /* medium */
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.input-field {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+.input-field:focus {
+    outline: none;
+    border-color: #4CAF50; /* Primary green */
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+}
+
+.input-field--error {
+    border-color: #e53e3e; /* red-500 */
+}
+
+.field-error-message {
+    margin-top: 8px;
+    font-size: 0.875rem; /* text-sm */
+    color: #e53e3e; /* red-600 */
+}
+
+/* --- Form Options (Remember Me & Forgot Password) --- */
+.form-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-input {
+    height: 16px; /* h-4 */
+    width: 16px; /* w-4 */
+    color: #4CAF50; /* Primary green */
+    border-color: #ccc;
+    border-radius: 4px;
+}
+
+.checkbox-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}
+
+.checkbox-label {
+    margin-left: 8px; /* ml-2 */
+    font-size: 0.875rem; /* text-sm */
+    color: #555;
+}
+
+.forgot-password-link {
+    font-size: 0.875rem; /* text-sm */
+    color: #4CAF50; /* Primary green */
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.forgot-password-link:hover {
+    color: #43A047; /* Darker green */
+}
+
+/* --- Submit Button --- */
+.loginbtn-primary {
+    width: 100%;
+    background-color: #4CAF50; /* Primary green */
+    color: white;
+    font-weight: 500; /* medium */
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    font-size: 1rem;
+}
+
+.loginbtn-primary:hover {
+    background-color: #43A047; /* Darker green */
+}
+
+.loginbtn-primary:active {
+    transform: scale(0.98);
+}
+
+.loginbtn-primary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* --- Google Login --- */
+.google-login-container {
+    margin-top: 24px; /* mt-4 */
+    text-align: center;
+}
+
+.google-login-button-wrapper {
+    display: inline-block; /* To center Google button */
+}
+
+/* --- Sign Up Link --- */
+.signup-link-wrapper {
+    text-align: center;
+    margin-top: 24px; /* space-y-6 for form */
+    font-size: 0.9rem;
+}
+
+.signup-text {
+    color: #666;
+}
+
+.signup-link {
+    color: #4CAF50; /* Primary green */
+    font-weight: 500; /* medium */
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.signup-link:hover {
+    color: #43A047; /* Darker green */
+}
+
+/* --- Footer Links --- */
+.login-footer-links {
+    margin-top: 32px; /* mt-8 */
+    text-align: center;
+}
+
+.footer-text {
+    font-size: 0.75rem; /* text-xs */
+    color: #777;
+}
+
+.footer-link {
+    color: #777;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+    color: #555;
+}
+
+/* --- Right Side (Image Area) --- */
+.login-image-area {
+    border-radius: 30px;
+    flex: 1; /* flex-1 */
+    position: relative;
+    overflow: hidden;
+    display: none; /* hidden by default, shown on lg screens */
+}
+
+@media (min-width: 1024px) { /* lg breakpoint */
+    .login-image-area {
+        display: block;
+    }
+}
+
+
+.login-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 95%; /* w-2/4 is 50%, adjusting for a better fit */
+    height: 85%; /* h-3/4 */
+    object-fit: cover;
+    opacity: 0.8; /* opacity-80 */
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    filter: grayscale(20%); /* Subtle filter for a professional look */
+}
+
+.image-overlay-bg {
+    position: absolute;
+    inset: 0;
+    /* background: linear-gradient(135deg, #4CAF50, #8bc34a); Green gradient */
+    opacity: 0.7; /* Adjusted for better visibility of image underneath */
+}
+
+.image-dark-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4); /* Dark overlay */
+}
+
+.image-text-content {
+    position: relative;
+    z-index: 10; /* To be above overlays */
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px; /* p-12 */
+    box-sizing: border-box;
+}
+
+.image-text-wrapper {
+    text-align: center;
+    color: white;
+    max-width: 400px;
+}
+
+.image-text-title {
+    font-size: 2.5rem; /* 4xl = 2.5rem */
+    font-weight: 700; /* bold */
+    margin-bottom: 16px;
+}
+
+.image-text-subtitle {
+    font-size: 1.25rem; /* xl = 1.25rem */
+    opacity: 0.9;
+    line-height: 1.5;
+}
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 1023px) { /* hide image on screens smaller than lg */
+    .login-image-area {
+        display: none;
+    }
+    .login-form-area {
+        flex: 1; /* make form area take full width */
+        padding: 30px 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .login-form-area {
+        padding: 20px 15px;
+    }
+
+    .login-title {
+        font-size: 1.8rem;
+    }
+
+    .form-options {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+}

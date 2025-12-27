@@ -1,0 +1,388 @@
+/* Products.css */
+
+/* ---------- Global products layout ---------- */
+
+.products-page {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding: 30px 20px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.products-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ---------- Header ---------- */
+
+.products-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.products-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.products-subtitle {
+  font-size: 16px;
+  color: #666;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* ---------- Grid of product cards ---------- */
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+/* ---------- Category Filter ---------- */
+
+.category-filter {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.category-filter-group {
+  display: inline-flex;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.category-filter-button {
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  border-right: 1px solid #ddd;
+  background-color: #ffffff;
+  color: #555;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.category-filter-button:last-child {
+  border-right: none;
+}
+
+.category-filter-button:hover {
+  background-color: #f0f0f0;
+}
+
+.category-filter-button--active {
+  background-color: #4CAF50;
+  color: #ffffff;
+  border-right-color: #4CAF50;
+}
+
+/* ---------- Product Card ---------- */
+
+.product-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card-image-wrapper {
+  position: relative;
+  height: 180px;
+  background-color: #f0f0f0;
+}
+
+.product-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-card-image-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #777;
+  font-size: 14px;
+}
+
+.product-card-fallback-icon {
+  font-size: 30px;
+  margin-bottom: 5px;
+}
+
+/* Badge */
+.product-card-badge-wrapper {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.product-card-badge {
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.product-card-badge--biogas {
+  background-color: #E8F5E9;
+  color: #2E7D32;
+}
+
+.product-card-badge--fertilizer {
+  background-color: #E3F2FD;
+  color: #1565C0;
+}
+
+/* Content */
+.product-card-content {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.product-card-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.product-card-description {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+  max-height: 40px;
+  overflow: hidden;
+}
+
+.product-card-meta {
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.product-card-meta-row {
+  margin-bottom: 3px;
+}
+
+/* Footer */
+.product-card-footer {
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.product-card-price {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+}
+
+.product-card-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.product-card-button:hover {
+  background-color: #43A047;
+}
+
+/* ---------- Loading / Error / Empty common ---------- */
+
+.products-full-page {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding: 30px 20px;
+}
+
+.products-center-box {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.products-state {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.products-state-icon {
+  font-size: 50px;
+  margin-bottom: 15px;
+}
+
+.products-state-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.products-state-text {
+  color: #666;
+  font-size: 15px;
+  max-width: 500px;
+  margin: 0 auto 20px;
+}
+
+.products-button {
+  padding: 10px 24px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.products-button:hover {
+  background-color: #43A047;
+}
+
+/* Loading spinner */
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 4px solid #e0e0e0;
+  border-top: 4px solid #4CAF50;
+  margin: 0 auto 20px;
+  animation: products-spin 1s linear infinite;
+}
+
+@keyframes products-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ---------- Empty state (inside page) ---------- */
+
+.products-empty {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+/* ---------- Product Summary ---------- */
+
+.product-summary {
+  margin-top: 30px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+}
+
+.product-summary-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.product-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 15px;
+}
+
+.product-summary-card {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 15px;
+  text-align: center;
+}
+
+.product-summary-number {
+  font-size: 26px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.product-summary-number--biogas {
+  color: #FF9800;
+}
+
+.product-summary-number--fertilizer {
+  color: #4CAF50;
+}
+
+.product-summary-label {
+  color: #666;
+  font-size: 14px;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 768px) {
+  .products-page {
+    padding: 20px 12px;
+  }
+
+  .products-title {
+    font-size: 24px;
+  }
+
+  .products-subtitle {
+    font-size: 14px;
+  }
+
+  .products-state {
+    padding: 40px 15px;
+  }
+}
+/* AuthContext.css */
+
+/* Neumorphic styles for the AuthProvider container */
+.auth-provider {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e0e5ec; /* Light neumorphic background */
+  padding: 20px;
+  box-shadow: 
+    8px 8px 15px rgba(0, 0, 0, 0.15),
+    -8px -8px 15px rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .auth-provider {
+    background-color: #2c2f33; /* Dark background */
+    box-shadow: 
+      8px 8px 15px rgba(0, 0, 0, 0.6),
+      -8px -8px 15px rgba(255, 255, 255, 0.1);
+  }
+}
