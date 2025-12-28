@@ -48,14 +48,14 @@ function App() {
             <Route path="/products" element={<PageFlip><ProductsPage /></PageFlip>} />
             <Route path="/cart" element={<PageFlip><Cart /></PageFlip>} />
             <Route path="/login" element={<PageFlip><Login /></PageFlip>} />
-            <Route path="/register" element={<pageFlip><Register /></pageFlip>} />
-            <Route path="/forgot-password" element={<pageFlip><ForgotPassword /></pageFlip>} />
-            <Route path="/reset-password" element={<pageFlip><ResetPassword /></pageFlip>} />
-            <Route path="/admin" element={<pageFlip><Admin /></pageFlip>} />
-            <Route path="/orders" element={<pageFlip> <Orders /> </pageFlip>} />
-            <Route path="/order/:orderId" element={<pageFlip> <OrderDetail /> </pageFlip>} />
-            <Route path="/checkout" element={<pageFlip> <Checkout /> </pageFlip>} />
-            <Route path="/contact" element={<pageFlip> <Contact /> </pageFlip>} />
+            <Route path="/register" element={<PageFlip><Register /></PageFlip>} />
+            <Route path="/forgot-password" element={<PageFlip><ForgotPassword /></PageFlip>} />
+            <Route path="/reset-password" element={<PageFlip><ResetPassword /></PageFlip>} />
+            <Route path="/admin" element={<PageFlip><Admin /></PageFlip>} />
+            <Route path="/orders" element={<PageFlip> <Orders /> </PageFlip>} />
+            <Route path="/order/:orderId" element={<PageFlip> <OrderDetail /> </PageFlip>} />
+            <Route path="/checkout" element={<PageFlip> <Checkout /> </PageFlip>} />
+            <Route path="/contact" element={<PageFlip> <Contact /> </PageFlip>} />
             {/* <Route path="/orders" element={<pageFlip> <Orders /> </pageFlip>} /> */}
           </Routes>
         </AnimatePresence>

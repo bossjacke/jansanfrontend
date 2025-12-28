@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
+import { GoogleLogin } from '@react-oauth/google';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext.jsx';
 import img from '../../assets/logo.png'; // Assuming this is your logo
@@ -184,14 +184,12 @@ function Login({ onLogin, onClose }) {
             {/* Google Login */}
             {oneTapSkipped && (
               <div className="google-login-container">
-                <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID || "YOUR_GOOGLE_CLIENT_ID"}>
-                  <div className="google-login-button-wrapper">
-                    <GoogleLogin
-                      onSuccess={handleGoogleLogin}
-                      onError={() => setErrors({ general: "Google login failed" })}
-                    />
-                  </div>
-                </GoogleOAuthProvider>
+                <div className="google-login-button-wrapper">
+                  <GoogleLogin
+                    onSuccess={handleGoogleLogin}
+                    onError={() => setErrors({ general: "Google login failed" })}
+                  />
+                </div>
               </div>
             )}
 

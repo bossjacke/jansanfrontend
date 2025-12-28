@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google'
+import { GoogleLogin } from '@react-oauth/google'
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext.jsx';
 import { RegisterUser } from "../../api.js";
@@ -182,7 +182,7 @@ function AuthPage() {
   React.useEffect(() => {
     if (window.google && window.google.accounts) {
       window.google.accounts.id.initialize({
-        client_id: "367194647798-0qjrumukncrmjj543lv31q5gop97elfk.apps.googleusercontent.com",
+        client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID || "YOUR_GOOGLE_CLIENT_ID",
         callback: handleGoogleLogin
       });
 
@@ -325,14 +325,12 @@ function AuthPage() {
               {/* Google Login */}
               {oneTapSkipped && (
                 <div className="mt-4">
-                  <GoogleOAuthProvider clientId="367194647798-0qjrumukncrmjj543lv31q5gop97elfk.apps.googleusercontent.com">
-                    <div className="flex justify-center">
-                      <GoogleLogin
-                        onSuccess={handleGoogleLogin}
-                        onError={() => setLoginErrors({ general: "Google login failed" })}
-                      />
-                    </div>
-                  </GoogleOAuthProvider>
+                  <div className="flex justify-center">
+                    <GoogleLogin
+                      onSuccess={handleGoogleLogin}
+                      onError={() => setLoginErrors({ general: "Google login failed" })}
+                    />
+                  </div>
                 </div>
               )}
             </form>
