@@ -13,5 +13,14 @@ export default defineConfig({
       '@/utils': path.resolve(__dirname, './src/utils'),
       '@/api': path.resolve(__dirname, './src/api')
     }
+  },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'https://sambackend-production.up.railway.app',
+        changeOrigin: true,
+        secure: true
+      }
+    }
   }
 })
