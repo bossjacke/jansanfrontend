@@ -3,6 +3,45 @@ import axios from "axios";
 const API_URL = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? "/api" : "https://sambackend-production.up.railway.app/api");
 console.log("Using API URL:", API_URL);
 
+// Create axios instance with better error handling
+const apiClient = axios.create({
+  baseURL: API_URL,
+  timeout: 10000,
+  headers: {
+    'Content-Type': 'application/json'
+  }
+});
+
+// Add request interceptor for auth headers
+apiClient.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
+
+// Add response interceptor for better CORS error handling
+apiClient.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.code === 'ERR_NETWORK' || error.message.includes('CORS')) {
+      console.error('CORS/Network Error Detected:', {
+        url: error.config?.url,
+        method: error.config?.method,
+        message: 'Backend CORS configuration is missing or incorrect'
+      });
+      
+      // Provide more user-friendly error message
+      error.message = 'Unable to connect to the server. Please check if the backend is running and has proper CORS configuration.';
+    }
+    return Promise.reject(error);
+  }
+);
+
 // Helper function to get auth headers
 const getAuthHeaders = () => {
   const token = localStorage.getItem('token');
