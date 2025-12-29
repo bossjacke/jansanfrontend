@@ -42,7 +42,8 @@ apiClient.interceptors.response.use(
   }
 );
 
-// Helper function to get auth headers
+// Note: This function is kept for backward compatibility but is no longer needed
+// since the request interceptor handles authentication automatically
 const getAuthHeaders = () => {
   const token = localStorage.getItem('token');
   if (!token) {
@@ -101,7 +102,7 @@ export const RegisterUser = async (userData) => {
     validateRequired(userData.email, 'Email');
     validateRequired(userData.password, 'Password');
     
-    const res = await axios.post(`${API_URL}/auth/register`, userData);
+    const res = await apiClient.post('/auth/register', userData);
     return res.data;
   } catch (err) {
     handleApiError(err, 'User Registration');
@@ -114,7 +115,7 @@ export const LoginUser = async (credentials) => {
     validateRequired(credentials.email, 'Email');
     validateRequired(credentials.password, 'Password');
     
-    const res = await axios.post(`${API_URL}/auth/login`, credentials);
+    const res = await apiClient.post('/auth/login', credentials);
     return res.data;
   } catch (err) {
     handleApiError(err, 'User Login');
@@ -125,7 +126,7 @@ export const GoogleLogin = async (credential) => {
   try {
     validateRequired(credential, 'Google credential');
     
-    const res = await axios.post(`${API_URL}/auth/google-login`, { credential });
+    const res = await apiClient.post('/auth/google-login', { credential });
     return res.data;
   } catch (err) {
     handleApiError(err, 'Google Login');
@@ -136,7 +137,7 @@ export const ForgotPassword = async (email) => {
   try {
     validateRequired(email, 'Email');
     
-    const res = await axios.post(`${API_URL}/password/forgot-password`, { email });
+    const res = await apiClient.post('/password/forgot-password', { email });
     return res.data;
   } catch (err) {
     handleApiError(err, 'Forgot Password');
@@ -149,7 +150,7 @@ export const ResetPassword = async (email, otp, newPassword) => {
     validateRequired(otp, 'OTP');
     validateRequired(newPassword, 'New password');
     
-    const res = await axios.post(`${API_URL}/password/reset-password`, {
+    const res = await apiClient.post('/password/reset-password', {
       email,
       otp,
       newPassword
@@ -164,7 +165,7 @@ export const ResetPassword = async (email, otp, newPassword) => {
 export const getAllProducts = async () => {
   try {
     console.log('Fetching products from:', `${API_URL}/products`);
-    const res = await axios.get(`${API_URL}/products`);
+    const res = await apiClient.get('/products');
     console.log('Products response:', res.data);
     return res.data;
   } catch (err) {
@@ -176,7 +177,7 @@ export const getProductById = async (productId) => {
   try {
     validateRequired(productId, 'Product ID');
     
-    const res = await axios.get(`${API_URL}/products/${productId}`);
+    const res = await apiClient.get(`/products/${productId}`);
     return res.data;
   } catch (err) {
     handleApiError(err, 'Get Product by ID');
@@ -189,9 +190,7 @@ export const createProduct = async (productData) => {
     validateRequired(productData.name, 'Product name');
     validateRequired(productData.price, 'Product price');
     
-    const res = await axios.post(`${API_URL}/products`, productData, {
-      headers: getAuthHeaders()
-    });
+    const res = await apiClient.post('/products', productData);
     return res.data;
   } catch (err) {
     handleApiError(err, 'Create Product');
@@ -203,9 +202,7 @@ export const updateProduct = async (productId, productData) => {
     validateRequired(productId, 'Product ID');
     validateRequired(productData, 'Product data');
     
-    const res = await axios.put(`${API_URL}/products/${productId}`, productData, {
-      headers: getAuthHeaders()
-    });
+    const res = await apiClient.put(`/products/${productId}`, productData);
     return res.data;
   } catch (err) {
     handleApiError(err, 'Update Product');
@@ -216,9 +213,7 @@ export const deleteProduct = async (productId) => {
   try {
     validateRequired(productId, 'Product ID');
     
-    const res = await axios.delete(`${API_URL}/products/${productId}`, {
-      headers: getAuthHeaders()
-    });
+    const res = await apiClient.delete(`/products/${productId}`);
     return res.data;
   } catch (err) {
     handleApiError(err, 'Delete Product');
@@ -228,13 +223,10 @@ export const deleteProduct = async (productId) => {
 // Cart API functions
 export const getCart = async () => {
   try {
-    const res = await axios.get(`${API_URL}/cart`, {
-      headers: getAuthHeaders()
-    });
+    const res = await apiClient.get('/cart');
     return res.data;
   } catch (err) {
-    const error = handleApiError(err, 'Get Cart');
-    throw error;
+    handleApiError(err, 'Get Cart');
   }
 };
 
@@ -247,16 +239,13 @@ export const addToCart = async (productId, quantity = 1) => {
       throw new Error('Quantity must be greater than 0');
     }
     
-    const res = await axios.post(`${API_URL}/cart/add`, {
+    const res = await apiClient.post('/cart/add', {
       productId,
       quantity
-    }, {
-      headers: getAuthHeaders()
     });
     return res.data;
   } catch (err) {
-    const error = handleApiError(err, 'Add to Cart');
-    throw error;
+    handleApiError(err, 'Add to Cart');
   }
 };
 
@@ -269,15 +258,12 @@ export const updateCartItem = async (itemId, quantity) => {
       throw new Error('Quantity must be greater than 0');
     }
     
-    const res = await axios.put(`${API_URL}/cart/item/${itemId}`, {
+    const res = await apiClient.put(`/cart/item/${itemId}`, {
       quantity
-    }, {
-      headers: getAuthHeaders()
     });
     return res.data;
   } catch (err) {
-    const error = handleApiError(err, 'Update Cart Item');
-    throw error;
+    handleApiError(err, 'Update Cart Item');
   }
 };
 
@@ -285,21 +271,16 @@ export const removeFromCart = async (itemId) => {
   try {
     validateRequired(itemId, 'Item ID');
     
-    const res = await axios.delete(`${API_URL}/cart/item/${itemId}`, {
-      headers: getAuthHeaders()
-    });
+    const res = await apiClient.delete(`/cart/item/${itemId}`);
     return res.data;
   } catch (err) {
-    const error = handleApiError(err, 'Remove from Cart');
-    throw error;
+    handleApiError(err, 'Remove from Cart');
   }
 };
 
 export const clearCart = async () => {
   try {
-    const res = await axios.delete(`${API_URL}/cart/clear`, {
-      headers: getAuthHeaders()
-    });
+    const res = await apiClient.delete('/cart/clear');
     return res.data;
   } catch (err) {
     handleApiError(err, 'Clear Cart');
@@ -308,9 +289,7 @@ export const clearCart = async () => {
 
 export const getCartSummary = async () => {
   try {
-    const res = await axios.get(`${API_URL}/cart/summary`, {
-      headers: getAuthHeaders()
-    });
+    const res = await apiClient.get('/cart/summary');
     return res.data;
   } catch (err) {
     handleApiError(err, 'Get Cart Summary');
@@ -354,9 +333,7 @@ export const createOrder = async (orderData) => {
     }
     
     console.log('📤 Sending order data to backend:', JSON.stringify(orderData, null, 2));
-    const res = await axios.post(`${API_URL}/orders/create`, orderData, {
-      headers: getAuthHeaders()
-    });
+    const res = await apiClient.post('/orders/create', orderData);
     console.log('📥 Order creation response:', res.data);
     return res.data;
   } catch (err) {
@@ -380,10 +357,8 @@ export const createOrder = async (orderData) => {
 export const getMyOrders = async (params = {}) => {
   try {
     const queryString = new URLSearchParams(params).toString();
-    const url = queryString ? `${API_URL}/orders/my?${queryString}` : `${API_URL}/orders/my`;
-    const res = await axios.get(url, {
-      headers: getAuthHeaders()
-    });
+    const url = queryString ? `/orders/my?${queryString}` : '/orders/my';
+    const res = await apiClient.get(url);
     return res.data;
   } catch (err) {
     handleApiError(err, 'Get My Orders');
@@ -394,9 +369,7 @@ export const getOrderById = async (orderId) => {
   try {
     validateRequired(orderId, 'Order ID');
     
-    const res = await axios.get(`${API_URL}/orders/${orderId}`, {
-      headers: getAuthHeaders()
-    });
+    const res = await apiClient.get(`/orders/${orderId}`);
     return res.data;
   } catch (err) {
     handleApiError(err, 'Get Order by ID');
@@ -407,9 +380,7 @@ export const cancelOrder = async (orderId) => {
   try {
     validateRequired(orderId, 'Order ID');
     
-    const res = await axios.delete(`${API_URL}/orders/${orderId}/cancel`, {
-      headers: getAuthHeaders()
-    });
+    const res = await apiClient.delete(`/orders/${orderId}/cancel`);
     return res.data;
   } catch (err) {
     handleApiError(err, 'Cancel Order');
@@ -420,9 +391,7 @@ export const cancelOrder = async (orderId) => {
 // Admin API functions
 export const getAllUsers = async () => {
   try {
-    const res = await axios.get(`${API_URL}/users`, {
-      headers: getAuthHeaders()
-    });
+    const res = await apiClient.get('/users');
     return res.data;
   } catch (err) {
     handleApiError(err, 'Get All Users');
@@ -439,10 +408,8 @@ export const updateUserRole = async (userId, role) => {
       throw new Error('Role must be either "user" or "admin"');
     }
     
-    const res = await axios.put(`${API_URL}/users/${userId}/role`, {
+    const res = await apiClient.put(`/users/${userId}/role`, {
       role
-    }, {
-      headers: getAuthHeaders()
     });
     return res.data;
   } catch (err) {
@@ -454,9 +421,7 @@ export const deleteUser = async (userId) => {
   try {
     validateRequired(userId, 'User ID');
     
-    const res = await axios.delete(`${API_URL}/users/${userId}`, {
-      headers: getAuthHeaders()
-    });
+    const res = await apiClient.delete(`/users/${userId}`);
     return res.data;
   } catch (err) {
     handleApiError(err, 'Delete User');
@@ -467,10 +432,8 @@ export const deleteUser = async (userId) => {
 export const getAdminOrders = async (params = {}) => {
   try {
     const queryString = new URLSearchParams(params).toString();
-    const url = queryString ? `${API_URL}/orders/admin/orders?${queryString}` : `${API_URL}/orders/admin/orders`;
-    const res = await axios.get(url, {
-      headers: getAuthHeaders()
-    });
+    const url = queryString ? `/orders/admin/orders?${queryString}` : '/orders/admin/orders';
+    const res = await apiClient.get(url);
     return res.data;
   } catch (err) {
     handleApiError(err, 'Get Admin Orders');
@@ -481,9 +444,7 @@ export const getOrderDetails = async (orderId) => {
   try {
     validateRequired(orderId, 'Order ID');
     
-    const res = await axios.get(`${API_URL}/orders/${orderId}`, {
-      headers: getAuthHeaders()
-    });
+    const res = await apiClient.get(`/orders/${orderId}`);
     return res.data;
   } catch (err) {
     handleApiError(err, 'Get Order Details');
@@ -501,9 +462,7 @@ export const updateOrderStatus = async (orderId, statusData) => {
       throw new Error(`Status must be one of: ${validStatuses.join(', ')}`);
     }
     
-    const res = await axios.put(`${API_URL}/orders/${orderId}/status`, statusData, {
-      headers: getAuthHeaders()
-    });
+    const res = await apiClient.put(`/orders/${orderId}/status`, statusData);
     return res.data;
   } catch (err) {
     handleApiError(err, 'Update Order Status');
