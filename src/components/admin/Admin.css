@@ -1,0 +1,596 @@
+/* Admin.css - Clean Professional Dashboard Style */
+
+/* --- 1. Global & Layout --- */
+
+:root {
+    /* Colors */
+    --admin-primary: #2563eb; /* Professional Blue */
+    --admin-primary-hover: #1d4ed8;
+    --admin-bg: #f3f4f6; /* Light Gray Background */
+    --admin-card-bg: #ffffff;
+    --admin-border: #e5e7eb;
+    --admin-text-main: #111827;
+    --admin-text-muted: #6b7280;
+    --admin-text-light: #9ca3af;
+    --admin-success: #10b981;
+    --admin-warning: #f59e0b;
+    --admin-danger: #ef4444;
+    --admin-purple: #8b5cf6;
+}
+
+.admin-layout {
+    min-height: calc(100vh - 64px);
+    padding: 30px 20px;
+    background-color: var(--admin-bg);
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    box-sizing: border-box;
+}
+
+.admin-main-container {
+    max-width: 1100px; /* Slightly wider for better readability */
+    margin: 0 auto;
+    background-color: var(--admin-card-bg);
+    border-radius: 16px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    padding: 30px;
+}
+
+.admin-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--admin-text-main);
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--admin-border);
+    padding-bottom: 20px;
+}
+
+/* --- 2. Admin Header & Tabs --- */
+
+.admin-header {
+    margin-bottom: 30px;
+}
+
+.admin-tabs-nav {
+    display: flex;
+    border-bottom: 1px solid var(--admin-border);
+    gap: 5px;
+    margin-bottom: 25px;
+}
+
+.admin-tab-btn {
+    padding: 12px 20px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: var(--admin-text-muted);
+    font-weight: 500;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.admin-tab-btn:hover {
+    color: var(--admin-text-main);
+    background-color: rgba(37, 99, 235, 0.05);
+}
+
+.admin-tab-btn.active {
+    color: var(--admin-primary);
+    border-bottom-color: var(--admin-primary);
+}
+
+.admin-badge-count {
+    background-color: var(--admin-bg);
+    color: var(--admin-text-main);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.admin-tab-btn.active .admin-badge-count {
+    background-color: #dbeafe; /* Light Blue */
+    color: var(--admin-primary);
+}
+
+/* Stats Cards */
+.admin-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.admin-stat-card {
+    background-color: #fff;
+    border: 1px solid var(--admin-border);
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    transition: all 0.2s ease;
+}
+
+.admin-stat-card:hover {
+    border-color: #cbd5e1;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.admin-stat-card.active {
+    border-color: var(--admin-primary);
+    background-color: #eff6ff; /* Very light blue tint */
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+}
+
+.admin-stat-info h4 {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--admin-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0 0 5px 0;
+}
+
+.admin-stat-info p {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--admin-text-main);
+    margin: 0;
+}
+
+.admin-stat-icon {
+    font-size: 2rem;
+    opacity: 0.6;
+}
+
+/* --- 3. Common UI Elements (Buttons, Inputs) --- */
+
+.admin-btn {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.admin-btn-primary {
+    background-color: var(--admin-primary);
+    color: white;
+}
+
+.admin-btn-primary:hover {
+    background-color: var(--admin-primary-hover);
+    transform: translateY(-1px);
+}
+
+.admin-btn-secondary {
+    background-color: #fff;
+    border: 1px solid var(--admin-border);
+    color: var(--admin-text-main);
+}
+
+.admin-btn-secondary:hover {
+    background-color: #f9fafb;
+    border-color: #d1d5db;
+}
+
+.admin-btn-danger {
+    background-color: #fee2e2;
+    color: var(--admin-danger);
+}
+
+.admin-btn-danger:hover {
+    background-color: #fecaca;
+}
+
+.admin-btn-sm {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+}
+
+.admin-input {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid var(--admin-border);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+}
+
+.admin-input:focus {
+    outline: none;
+    border-color: var(--admin-primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.admin-label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--admin-text-main);
+    margin-bottom: 6px;
+}
+
+/* --- 4. Orders Management Styles --- */
+
+.order-controls {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.order-controls .admin-input {
+    max-width: 300px;
+}
+
+.orders-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.order-card {
+    background-color: white;
+    border: 1px solid var(--admin-border);
+    border-radius: 12px;
+    padding: 20px;
+    transition: box-shadow 0.2s ease;
+}
+
+.order-card:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+}
+
+.order-header-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed var(--admin-border);
+}
+
+.order-id, .order-date {
+    font-size: 0.9rem;
+    color: var(--admin-text-muted);
+    margin-bottom: 4px;
+}
+
+.order-status-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: white;
+}
+
+.order-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.order-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.status-select {
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid var(--admin-border);
+    background-color: white;
+    cursor: pointer;
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+    padding: 20px;
+    border-bottom: 1px solid var(--admin-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--admin-text-main);
+    margin: 0;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-footer {
+    padding: 20px;
+    border-top: 1px solid var(--admin-border);
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--admin-text-muted);
+    cursor: pointer;
+}
+
+/* --- 5. Product Management Styles --- */
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.product-card {
+    background-color: white;
+    border: 1px solid var(--admin-border);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.2s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+    border-color: #dbeafe;
+}
+
+.product-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.product-card h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--admin-text-main);
+    line-height: 1.4;
+}
+
+.product-type-badge {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: white;
+}
+
+.product-price {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--admin-primary);
+}
+
+.product-meta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: var(--admin-text-muted);
+    margin-bottom: 15px;
+}
+
+.product-meta-item strong {
+    color: var(--admin-text-main);
+}
+
+.product-actions {
+    margin-top: auto;
+    display: flex;
+    gap: 10px;
+}
+
+/* Product Form */
+.product-form-container {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid var(--admin-border);
+    margin-bottom: 20px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+/* --- 6. User Management Styles --- */
+
+.users-container {
+    margin-top: 20px;
+}
+
+.users-header h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--admin-text-main);
+    margin-bottom: 20px;
+}
+
+.user-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.user-stat-card {
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid var(--admin-border);
+}
+
+.user-stat-card.blue { background-color: #eff6ff; border-color: #bfdbfe; }
+.user-stat-card.purple { background-color: #f5f3ff; border-color: #ddd6fe; }
+.user-stat-card.green { background-color: #ecfdf5; border-color: #a7f3d0; }
+
+.user-stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.user-stat-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.users-filter-bar {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.users-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.user-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--admin-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.user-info h4 {
+    margin: 0 0 5px 0;
+    font-size: 1.1rem;
+    color: var(--admin-text-main);
+}
+
+.user-role-badge {
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: white;
+}
+
+.user-role-badge.admin { background-color: var(--admin-purple); }
+.user-role-badge.customer { background-color: var(--admin-primary); }
+
+.user-details-text {
+    color: var(--admin-text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+/* --- 7. Loading & Error States --- */
+
+.loading-container, .error-container {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--admin-text-muted);
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--admin-border);
+    border-top: 4px solid var(--admin-primary);
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.error-message {
+    background-color: #fef2f2;
+    color: #991b1b;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #fecaca;
+}
+
+/* --- 8. Responsive --- */
+
+@media (max-width: 768px) {
+    .admin-main-container {
+        padding: 20px;
+    }
+    
+    .admin-stats-grid,
+    .user-stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .user-card {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .order-header-info {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .order-details {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+}

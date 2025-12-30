@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { getAdminOrders, getOrderDetails, updateOrderStatus } from '../../api.js';
+import './Admin.css';
 
 const OrderManagement = ({ onOrdersUpdate }) => {
   const [orders, setOrders] = useState([]);
@@ -65,7 +66,6 @@ const OrderManagement = ({ onOrdersUpdate }) => {
         if (showOrderDetails) {
           fetchOrderDetails(orderId);
         }
-        // Notify parent component to refresh its count
         if (onOrdersUpdate) {
           onOrdersUpdate();
         }
@@ -97,13 +97,13 @@ const OrderManagement = ({ onOrdersUpdate }) => {
   const getStatusColor = (status) => {
     switch (status) {
       case 'Processing':
-        return '#ffc107';
+        return '#f59e0b';
       case 'Delivered':
-        return '#28a745';
+        return '#10b981';
       case 'Cancelled':
-        return '#dc3545';
+        return '#ef4444';
       default:
-        return '#6c757d';
+        return '#6b7280';
     }
   };
 
@@ -144,7 +144,7 @@ const OrderManagement = ({ onOrdersUpdate }) => {
 
   if (loading) {
     return (
-      <div className="loading-container">
+      <div className="order-loading">
         <div className="loading-spinner"></div>
         <p>Loading orders...</p>
       </div>
