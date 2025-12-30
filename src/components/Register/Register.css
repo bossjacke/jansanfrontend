@@ -46,7 +46,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #4CAF50, #2196F3);
+    background: rgba(0, 0, 0, 0.1);
     /* Your green/blue gradient */
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
@@ -176,8 +176,8 @@
 
 
 /* Buttons */
-.btn-primary {
-    /* width: 100%; */
+.signin-btn-primary {
+    width: 100%;
     background-color: #4CAF50;
     color: white;
     border: none;
@@ -186,14 +186,14 @@
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.2s ease;
-    /* margin-bottom: 1rem; */
+    margin-bottom: 1rem;
 }
 
-.btn-primary:hover:not(:disabled) {
+.signin-btn-primary:hover:not(:disabled) {
     background-color: #43A047;
 }
 
-.btn-primary:disabled {
+.signin-btn-primary:disabled {
     opacity: 0.6;
     cursor: not-allowed;
 }
@@ -218,6 +218,7 @@
 
 /* Right Side - Image */
 .register-image-section {
+    margin: 100px 20px 100px 0px;
     border-radius: 30px;
     flex: 1;
     position: relative;

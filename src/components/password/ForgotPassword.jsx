@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ForgotPassword } from '../../api.js';
 import { Link } from 'react-router-dom';
+import './password.css'; // Import the custom CSS
 
 function ForgotPasswordPage() {
   const [email, setEmail] = useState('');
@@ -37,21 +38,21 @@ function ForgotPasswordPage() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+    <div className="forgetPage">
       {/* Forgot Password Card */}
-      <div className="relative bg-gray-200 shadow-xl rounded-xl p-6 w-80 text-center">
+      <div className="forgetCard">
         {/* Avatar Circle */}
-        <div className="w-16 h-16 bg-blue-300 text-gray-700 text-2xl font-bold flex items-center justify-center rounded-full mx-auto mb-4">
+        <div className="forgetAvatar">
           {showOtpSent ? '✓' : '?'}
         </div>
 
         {/* Title */}
-        <h2 className="text-green-600 font-semibold text-lg mb-3">
+        <h2 className="forgetTitle">
           {showOtpSent ? 'OTP Sent' : 'Forgot Password'}
         </h2>
 
         {/* Description */}
-        <p className="text-sm text-gray-600 mb-4">
+        <p className="forgetDescription">
           {showOtpSent 
             ? `Check your email for the 6-digit OTP sent to ${email}`
             : 'Enter your email to receive a password reset OTP'
@@ -60,11 +61,11 @@ function ForgotPasswordPage() {
 
         {!showOtpSent ? (
           /* Form */
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          <form onSubmit={handleSubmit} className="forgetForm">
             <input
               type="email"
               placeholder="Enter your email"
-              className="bg-green-500 text-white placeholder-white rounded-lg py-2 text-center focus:ring-2 focus:ring-green-600 focus:outline-none"
+              className="forgetInput"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -73,18 +74,18 @@ function ForgotPasswordPage() {
 
             {/* Message Display */}
             {message && (
-              <div className={`text-sm ${message.includes('sent') || message.includes('successfully') ? 'text-green-600' : 'text-red-600'}`}>
+              <div className={`forgetMessage ${message.includes('sent') || message.includes('successfully') ? 'forgetMessage--success' : 'forgetMessage--error'}`}>
                 {message}
               </div>
             )}
 
             {/* Dashed Line */}
-            <div className="border-t-4 border-dashed border-black w-3/4 mx-auto my-1"></div>
+            <div className="forgetSeparator"></div>
 
             {/* Submit Button */}
             <button
               type="submit"
-              className="bg-green-600 text-white rounded-md py-2 w-32 mx-auto hover:bg-green-700 focus:ring-2 focus:ring-green-400"
+              className="forgetSubmitBtn"
               disabled={loading}
             >
               {loading ? 'Sending...' : 'Send OTP'}
@@ -92,34 +93,34 @@ function ForgotPasswordPage() {
           </form>
         ) : (
           /* OTP Sent View */
-          <div className="flex flex-col gap-4">
+          <div className="forgetOtpSentView">
             {/* Success Message */}
-            <div className="text-green-600 text-sm">
+            <div className="forgetMessage forgetMessage--success">
               {message}
             </div>
 
             {/* Instructions */}
-            <div className="text-xs text-gray-500">
+            <div className="forgetInstructions">
               • OTP expires in 10 minutes<br/>
               • Check your spam folder<br/>
               • Use the OTP in Reset Password page
             </div>
 
             {/* Dashed Line */}
-            <div className="border-t-4 border-dashed border-black w-3/4 mx-auto my-1"></div>
+            <div className="forgetSeparator"></div>
 
             {/* Action Buttons */}
-            <div className="flex gap-2 justify-center">
+            <div className="forgetActionButtons">
               <button
                 onClick={handleReset}
-                className="bg-green-600 text-white rounded-md py-2 px-4 hover:bg-green-700 focus:ring-2 focus:ring-green-400 text-sm"
+                className="forgetActionBtn"
               >
                 Send Again
               </button>
               <Link
                 to="/reset-password"
                 state={{ email }}
-                className="bg-blue-600 text-white rounded-md py-2 px-4 hover:bg-blue-700 focus:ring-2 focus:ring-blue-400 text-sm no-underline"
+                className="forgetActionLink"
               >
                 Reset Password
               </Link>
@@ -130,7 +131,7 @@ function ForgotPasswordPage() {
         {/* Back to Login Link */}
         <Link
           to="/login"
-          className="absolute bottom-3 left-3 text-white bg-green-600 hover:bg-green-700 rounded-md text-xs px-3 py-1"
+          className="forgetBackToLogin"
         >
           Back to Login
         </Link>

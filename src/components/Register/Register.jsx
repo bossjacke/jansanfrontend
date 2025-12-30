@@ -3,7 +3,11 @@ import { RegisterUser } from "../../api.js";
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import './Register.css'; // இதை import பண்ணு
+import './Register.css'; 
+import logo from '../../assets/logo.png';
+
+const adamsFireLogo = logo;
+
 
 function Register({ onRegister, onClose }) {
   const navigate = useNavigate();
@@ -95,7 +99,7 @@ function Register({ onRegister, onClose }) {
             {/* Logo/Branding */}
             <div className="register-header">
               <div className="register-logo">
-                <span className="logo-text">X</span> {/* Placeholder for logo */}
+                <span className="logo-text"> <img src={adamsFireLogo} alt="" /> </span> {/* Placeholder for logo */}
               </div>
               <h1>Create Account</h1>
               <p>Join us today and get started</p>
@@ -228,7 +232,7 @@ function Register({ onRegister, onClose }) {
               <button
                 type="submit"
                 disabled={loading}
-                className="btn-primary"
+                className="signin-btn-primary"
               >
                 {loading ? 'Creating Account...' : 'Create Account'}
               </button>

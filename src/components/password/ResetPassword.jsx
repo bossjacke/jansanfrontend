@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ResetPassword } from '../../api.js';
 import { useNavigate, Link, useLocation } from 'react-router-dom';
+import './password.css'; // Import the custom CSS
 
 function ResetPasswordPage() {
   const navigate = useNavigate();
@@ -70,28 +71,28 @@ function ResetPasswordPage() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+    <div className="resetPage">
       {/* Reset Password Card */}
-      <div className="relative bg-gray-200 shadow-xl rounded-xl p-6 w-80 text-center">
+      <div className="resetCard">
         {/* Avatar Circle */}
-        <div className="w-16 h-16 bg-blue-300 text-gray-700 text-2xl font-bold flex items-center justify-center rounded-full mx-auto mb-4">
+        <div className="resetAvatar">
           🔒
         </div>
 
         {/* Title */}
-        <h2 className="text-green-600 font-semibold text-lg mb-3">Reset Password</h2>
+        <h2 className="resetTitle">Reset Password</h2>
         
         {/* Description */}
-        <p className="text-sm text-gray-600 mb-4">
+        <p className="resetDescription">
           Enter your email, OTP, and new password
         </p>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+        <form onSubmit={handleSubmit} className="resetForm">
           <input
             type="email"
             placeholder="Email address"
-            className="bg-green-500 text-white placeholder-white rounded-lg py-2 text-center focus:ring-2 focus:ring-green-600 focus:outline-none"
+            className="resetInput"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -101,7 +102,7 @@ function ResetPasswordPage() {
           <input
             type="text"
             placeholder="6-digit OTP"
-            className="bg-green-500 text-white placeholder-white rounded-lg py-2 text-center focus:ring-2 focus:ring-green-600 focus:outline-none"
+            className="resetInput"
             value={otp}
             onChange={handleOtpChange}
             maxLength="6"
@@ -112,7 +113,7 @@ function ResetPasswordPage() {
           <input
             type="password"
             placeholder="New password"
-            className="bg-green-500 text-white placeholder-white rounded-lg py-2 text-center focus:ring-2 focus:ring-green-600 focus:outline-none"
+            className="resetInput"
             value={newPassword}
             onChange={(e) => setNewPassword(e.target.value)}
             required
@@ -123,7 +124,7 @@ function ResetPasswordPage() {
           <input
             type="password"
             placeholder="Confirm new password"
-            className="bg-green-500 text-white placeholder-white rounded-lg py-2 text-center focus:ring-2 focus:ring-green-600 focus:outline-none"
+            className="resetInput"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
@@ -133,18 +134,18 @@ function ResetPasswordPage() {
 
           {/* Message Display */}
           {message && (
-            <div className={`text-sm ${messageType === 'success' ? 'text-green-600' : 'text-red-600'}`}>
+            <div className={`resetMessage ${messageType === 'success' ? 'resetMessage--success' : 'resetMessage--error'}`}>
               {message}
             </div>
           )}
 
           {/* Dashed Line */}
-          <div className="border-t-4 border-dashed border-black w-3/4 mx-auto my-1"></div>
+          <div className="resetSeparator"></div>
 
           {/* Submit Button */}
           <button
             type="submit"
-            className="bg-green-600 text-white rounded-md py-2 w-32 mx-auto hover:bg-green-700 focus:ring-2 focus:ring-green-400"
+            className="resetSubmitBtn"
             disabled={loading}
           >
             {loading ? 'Resetting...' : 'Reset Password'}
@@ -152,7 +153,7 @@ function ResetPasswordPage() {
         </form>
 
         {/* Help Text */}
-        <div className="text-xs text-gray-500 mt-3">
+        <div className="resetHelpText">
           • OTP expires in 10 minutes<br/>
           • Check your email for the 6-digit code
         </div>
@@ -160,7 +161,7 @@ function ResetPasswordPage() {
         {/* Back to Login Link */}
         <Link
           to="/login"
-          className="absolute bottom-3 left-3 text-white bg-green-600 hover:bg-green-700 rounded-md text-xs px-3 py-1"
+          className="resetBackToLogin"
         >
           Back to Login
         </Link>
@@ -168,7 +169,7 @@ function ResetPasswordPage() {
         {/* Request OTP Link */}
         <Link
           to="/forgot-password"
-          className="absolute bottom-3 right-3 text-white bg-blue-600 hover:bg-blue-700 rounded-md text-xs px-3 py-1"
+          className="resetRequestOtpBtn"
         >
           Request OTP
         </Link>
